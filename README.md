@@ -1,46 +1,30 @@
-## LokApp
+# LokApp
 
-B2B meal ordering for industrial restaurants; ends WhatsApp/meal ticket chaos, standardizes operations, adds stock tracking and transparent billing foundations.
+B2B meal ordering for industrial-zone restaurants. Replaces unstructured WhatsApp orders and paper meal tickets with standardized flows, dynamic stock tracking, and transparent billing.
 
-### About this repo
+## Quick Start
+**Watch (90s):** [youtube.com/watch?v=0OZnB6jDBDI](https://www.youtube.com/watch?v=0OZnB6jDBDI)  
+**Live demo:** [lokapp-role-based-serhatyurdakuls-projects.vercel.app](https://lokapp-role-based-serhatyurdakuls-projects.vercel.app)
 
-- This repository is for showcase only. The application code lives in a private repository.
-- Below you can find product screenshots and brief descriptions of the main flows.
-
-## Demo Video
-
-- YouTube (Unlisted): [Demo Video](https://www.youtube.com/watch?v=0OZnB6jDBDI)
-
-## Live Demo & Demo Accounts
-
-**Live Demo:** [Open App](https://lokapp-role-based-serhatyurdakuls-projects.vercel.app/)
-
-**Demo accounts**
+**Demo accounts** *(reset periodically)*
 - **Restaurant** — Email: `testloksorumlu@gmail.com` · Password: `test1234`
 - **Customer** — Email: `mehmetaka@gmail.com` · Password: `12345678`
 
+> This repository is for showcase only; the application code lives in a private repository. Below are product screenshots and brief explanations of the main flows.
 
 ## Features
+- **Role-based access**: Restaurant and Customer views with protected routes.
+- **Company-grouped kitchen view**: Orders aggregated per company for faster prep and clear summaries.
+- **Stock-aware menu**: Sold-out items disabled; one choice per category.
+- **Mobile-first UI**: Responsive layouts for small and large screens.
+- **Transparent billing**: Clear per-company order summaries support restaurant and company reconciliation.
 
-- **Role‑based access**: Restaurant and Customer views with protected routes.
-- **Company‑grouped kitchen view**: Orders aggregated per company for faster preparation.
-- **Stock‑aware menu**: Sold‑out items are disabled for selection.
-- **Mobile‑first UI**: Smooth experience on small screens.
-- **Standardized flow**: Reduces WhatsApp/meal ticket chaos and provides clear prep summaries.
-- QR check‑in and reporting are on the roadmap.
+## Tech Stack & Architecture
+- **Frontend:** React, Redux Toolkit, React Router DOM, SCSS
+- **API layer:** Centralized HTTP client with auth headers and 401 handling
+- **Architecture:** Feature-based modules (auth, customer, restaurant), shared UI in `components/common`, centralized state in `store`
 
-## Tech & Architecture (code‑free overview)
-
-- Frontend: React 18, Redux Toolkit, React Router DOM 6, Axios, SCSS, Vite, SVGR
-- Architecture: Feature‑based modules (auth, customer, restaurant), shared UI in `components/common`, centralized state in `store`
-- Authorization: Protected routes (`PrivateRoute`), role‑based layouts (Customer / Restaurant), role‑aware rendering
-- State: RTK slices (`auth`, `customerMenu`, `restaurantMenu`, `restaurantOrders`, `restaurantInfo`) and memoized selectors
-- API layer: Axios instance + interceptors (auth headers with `Authorization` and `uniqueId`; global logout on 401/tokenError; user‑friendly errors)
-- UX: Mobile‑first; stock‑aware components; company‑grouped kitchen view; one‑choice‑per‑category rule
-
-## Folder Structure (high‑level) / Klasör Yapısı (özet)
-
-Code lives in a private repository. High‑level overview of the structure:
+## Folder Structure (overview)
 
 ```
 src/
@@ -55,117 +39,59 @@ src/
   styles/              # Global SCSS
 ```
 
-## Ekran Görüntüleri / Screenshots – Mobile Views
+## Screenshots (Mobile)
 
 <figure>
   <img src="docs/screenshots/login-register-1.png" width="820" alt="Login / Register" />
-  <figcaption>
-    <strong>Login / Register</strong><br/>
-    Login/Register: field‑level validation with inline error (e.g., invalid email); password visibility toggle; registration includes employee type and city/district/industrial‑site/company selectors; role‑based redirect after login.
-  </figcaption>
-  </figure>
-
-<hr/>
-
-<figure>
-  <img src="docs/screenshots/restaurant-2.png" width="820" alt="Restaurant – Menu Management & Add Meal" />
-  <figcaption>
-    <strong>Restaurant – Menu Management & Add Meal</strong><br/>
-    Menu Management: category tabs and search; meal cards with Remaining/Sold badges and “…” action menu (Edit/Delete). "New Meal" button and "Add Meal" modal with Category, type‑ahead search, and Portion Quantity.
-  </figcaption>
+  <figcaption><strong>Login / Register</strong><br/>Field validation, password toggle, role-based redirect after login.</figcaption>
 </figure>
 
-<hr/>
-
 <figure>
-  <img src="docs/screenshots/restaurant-1.png" width="820" alt="Restaurant – Dashboard & Low Stock / Stock Update" />
-  <figcaption>
-    <strong>Restaurant – Dashboard & Low Stock / Stock Update</strong><br/>
-    Dashboard: "Pending Orders" card (CTA: Manage Orders) and "Low Stock" list with per‑meal Remaining/Sold badges and Sold‑Out tag. Right: stock update modal with "Remaining Portions", quick "Mark as Sold Out" and "Update" action.
-  </figcaption>
+  <img src="docs/screenshots/customer-1.png" width="820" alt="Customer — Menu (mobile)" />
+  <figcaption><strong>Customer — Menu (mobile)</strong><br/>One choice per category; sold-out disabled; sticky “Confirm Order”.</figcaption>
 </figure>
 
-<hr/>
-
 <figure>
-  <img src="docs/screenshots/restaurant-3.png" width="820" alt="Restaurant – Orders & Order Detail" />
-  <figcaption>
-    <strong>Restaurant – Orders & Order Detail</strong><br/>
-    Orders: industrial‑site tabs and search; company cards “Pending/Completed”. Order Detail: per‑category/meal quantity summary with “Complete Order” button; confirmation modal finalizes the status update.
-  </figcaption>
+  <img src="docs/screenshots/customer-2.png" width="820" alt="Customer — QR & Profile" />
+  <figcaption><strong>Customer — QR & Profile</strong><br/>Dine-in check-in flow; profile with company info and meal history.</figcaption>
 </figure>
 
-<hr/>
-
 <figure>
-  <img src="docs/screenshots/customer-1.png" width="820" alt="Customer – Screen" />
-  <figcaption>
-    <strong>Customer – Menu (mobile)</strong><br/>
-    Mobile ordering: one choice per category; sold‑out disabled; sticky "Confirm Order" button.
-  </figcaption>
+  <img src="docs/screenshots/restaurant-2.png" width="820" alt="Restaurant — Menu Management & Add Meal" />
+  <figcaption><strong>Restaurant — Menu Management & Add Meal</strong><br/>Category tabs/search; Remaining/Sold badges; Edit/Delete actions.</figcaption>
 </figure>
 
-<hr/>
-
 <figure>
-  <img src="docs/screenshots/customer-2.png" width="820" alt="Customer – QR & Profile" />
-  <figcaption>
-    <strong>Customer – QR & Profile</strong><br/>
-    QR verification: dine‑in check‑in flow (camera preparing). Profile: company info, company code, contracted restaurant field, and meal history link.
-  </figcaption>
+  <img src="docs/screenshots/restaurant-1.png" width="820" alt="Restaurant — Dashboard & Low Stock / Stock Update" />
+  <figcaption><strong>Restaurant — Dashboard & Low Stock</strong><br/>Pending Orders, Low Stock list, mark as Sold-Out / update stock.</figcaption>
 </figure>
 
-<hr/>
-
-### Desktop Görünümleri / Desktop Views (responsive layouts)
-
 <figure>
-  <img src="docs/screenshots/restaurant-responsive-2.png" width="820" alt="Restaurant – Menu Management (desktop)" />
-  <figcaption>
-    <strong>Restaurant – Menu Management (desktop)</strong><br/>
-    Category tabs and search; cards show Remaining/Sold badges; “…” action menu (Edit/Delete).
-  </figcaption>
+  <img src="docs/screenshots/restaurant-3.png" width="820" alt="Restaurant — Orders & Order Detail" />
+  <figcaption><strong>Restaurant — Orders & Detail</strong><br/>Industrial-site tabs; per-company status; confirmation modal on complete.</figcaption>
 </figure>
 
-<hr/>
+## Screenshots (Desktop)
 
 <figure>
-  <img src="docs/screenshots/restaurant-responsive-1.png" width="820" alt="Restaurant – Dashboard (desktop)" />
-  <figcaption>
-    <strong>Restaurant – Dashboard (desktop)</strong><br/>
-    "Pending Orders" card and "Low Stock" chips (Remaining/Sold, Sold‑Out); "Menu Management" shortcut.
-  </figcaption>
+  <img src="docs/screenshots/restaurant-responsive-2.png" width="820" alt="Restaurant — Menu Management (desktop)" />
+  <figcaption><strong>Restaurant — Menu Management (desktop)</strong></figcaption>
 </figure>
-
-<hr/>
-<figure>
-  <img src="docs/screenshots/restaurant-responsive-3.png" width="820" alt="Restaurant – Orders list (desktop)" />
-  <figcaption>
-    <strong>Restaurant – Orders list (desktop)</strong><br/>
-    Industrial‑site tabs and search; Pending/Completed sections with company cards.
-  </figcaption>
-</figure>
-
-<hr/>
 
 <figure>
-  <img src="docs/screenshots/customer-responsive-1.png" width="820" alt="Customer – Desktop ordering" />
-  <figcaption>
-    <strong>Customer – Desktop ordering</strong><br/>
-    Desktop ordering — category sections and large card grid; sticky "Confirm Order" button with horizontal‑scroll rows.
-  </figcaption>
+  <img src="docs/screenshots/restaurant-responsive-1.png" width="820" alt="Restaurant — Dashboard (desktop)" />
+  <figcaption><strong>Restaurant — Dashboard (desktop)</strong></figcaption>
 </figure>
 
-<hr/>
+<figure>
+  <img src="docs/screenshots/restaurant-responsive-3.png" width="820" alt="Restaurant — Orders list (desktop)" />
+  <figcaption><strong>Restaurant — Orders list (desktop)</strong></figcaption>
+</figure>
 
 <figure>
   <img src="docs/screenshots/folder-structure.png" width="820" alt="Folder Structure / Architecture" />
-  <figcaption>
-    <strong>Architecture</strong><br/>
-    Feature‑based structure, protected routes and API layer overview.
-  </figcaption>
+  <figcaption><strong>Architecture</strong><br/>Feature-based structure; protected routes; API overview.</figcaption>
 </figure>
 
 ## Roadmap
-
-- QR check‑in integration and reporting (daily/monthly company totals)
+- QR check-in integration and reporting (daily/monthly company totals)
