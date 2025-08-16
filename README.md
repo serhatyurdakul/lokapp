@@ -13,18 +13,12 @@ B2B meal ordering for industrial restaurants; ends WhatsApp/meal ticket chaos, s
 
 ## Live Demo & Demo Accounts
 
-Live Demo (Vercel): [Open App](https://lokapp-role-based-serhatyurdakuls-projects.vercel.app/)
+**Live Demo:** [Open App](https://lokapp-role-based-serhatyurdakuls-projects.vercel.app/)
 
-These accounts are for demo purposes only and may be reset periodically.
+**Demo accounts** *(reset periodically)*
+- **Restaurant** — Email: `testloksorumlu@gmail.com` · Password: `test1234`
+- **Customer** — Email: `mehmetaka@gmail.com` · Password: `12345678`
 
-- Restaurant
-
-  - Email: `testloksorumlu@gmail.com`
-  - Password: `test1234`
-
-- Customer
-  - Email: `mehmetaka@gmail.com`
-  - Password: `12345678`
 
 ## Features
 
